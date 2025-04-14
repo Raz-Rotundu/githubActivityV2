@@ -1,13 +1,14 @@
 package com.lumius.APIgetterV2;
 
-/**
- * Hello world!
- *
- */
 public class App 
 {
     public static void main( String[] args )
     {
-        System.out.println( "Hello World!" );
+
+        if (args.length != 1) {
+     	   System.out.println("Usage: GitHubActivityV2 <Username>");
+        } else {
+     	   String url = "https://api.github.com/users/" + args[0] + "/events";
+        }
     }
 }
