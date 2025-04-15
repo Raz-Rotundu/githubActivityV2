@@ -3,7 +3,7 @@ This is a simpler version of the gitHub Activity reader found [here](). It has n
 
 
 ## Dependencies
-**Java**: JRE 9+ and/or JDK 9+ if developing (streams)
+**Java**: JRE 18+ and/or JDK 18+ if developing (streams)
 
 
 **Maven**: Maven 3.6+
@@ -17,14 +17,14 @@ mvn clean package
 ```
 In /target there should now be 2 files:
 <ul>
-	<li>githubActivity.jar</li>
-	<li>githubActivity-jar-with-dependencies.jar</li>
+	<li>GitHubActivityV2-1.0.0.jar</li>
+	<li>original-GitHubActivityV2-1.0.0.jar</li>
 </ul>
 
 run the following to execute the program, providing the username
 
 ```Shell
-java -jar githubActivity-jar-with-dependencies.jar -n <username>
+java -jar GitHubActivityV2-1.0.0.jar <username>
 ```
 
 ## Features
@@ -36,5 +36,5 @@ java -jar githubActivity-jar-with-dependencies.jar -n USERNAME
 
 
 ```Shell
-java -jar githubActivity-jar-with-dependencies.jar -n Raz-Rotundu -l 10 -a abcdef
+java -jar GitHubActivityV2-1.0.0.jar kamranahmedse
 ```

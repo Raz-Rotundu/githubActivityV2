@@ -4,7 +4,7 @@
 
   <groupId>com.lumius</groupId>
   <artifactId>GitHubActivityV2</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>1.0.0</version>
   <packaging>jar</packaging>
 
   <name>APIgetterV2</name>
