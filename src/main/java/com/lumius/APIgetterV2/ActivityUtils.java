@@ -82,7 +82,7 @@ public class ActivityUtils {
 	  		}
 		}
 		frequencies.forEach((k,v) -> {
-			String s = String.format("Made %d commits to %s", v, k.getV());
+			String s = String.format("Pushed %d commits to %s", v, k.getV());
 			out.addFirst(s);
 		});
 		return out;
