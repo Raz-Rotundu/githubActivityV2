@@ -49,7 +49,8 @@ public class ActivityUtils {
 	  		
 	  			// Condense number of commits to each repo
 	  			Pair<String, String> p = new Pair<String, String>(type, repo);
-	  			if(frequencies.containsKey(p)) {
+	  			//error here
+	  			if(frequencies.keySet().contains(p)) {
 	  				frequencies.replace(p, frequencies.get(p) + size);
 	  			}
 	  			else {

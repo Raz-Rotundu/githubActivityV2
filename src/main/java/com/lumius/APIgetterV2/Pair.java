@@ -1,5 +1,7 @@
 package com.lumius.APIgetterV2;
 
+import java.util.Objects;
+
 /**
  * Pair -- A basic container for two objects
  * @author Razvan Rotundu
@@ -26,10 +28,27 @@ public class Pair<K, V> {
 		return this.e2;
 	}
 	
-
-	// equality
-	public boolean equals(Pair p) {
-		return (this.e1.equals(p.getK())) && (this.e2.equals(p.getV()));
+	//Equality
+	@Override
+	public boolean equals(Object o) {
+		if (o == this) {
+			return true;
+		} else if (!(o instanceof Pair)) {
+			return false;
+		} else {
+			Pair other = (Pair)o;
+			if(this.e1.equals(other.getK()) && this.e2.equals(other.getV())) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	}
+	
+	//Hashing
+	@Override
+	public int hashCode() {
+		return Objects.hash(e1, e2);
 	}
 }
 
