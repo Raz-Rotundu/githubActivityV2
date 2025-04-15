@@ -33,6 +33,8 @@ public class ActivityUtils {
 	public static List<String> parseStrings(List<JsonNode> nodes) {
 		List<String> out = new ArrayList<String>();
 		
+		Integer testsize = nodes.size();
+		
 		Map<Pair<String, String>, Integer> frequencies = new HashMap<>();
   	
 		// get frequencies 
@@ -72,6 +74,10 @@ public class ActivityUtils {
 	  			action = payload.get("action").asText();
 	  			String issue = payload.get("issue").asText();
 	  			out.add(String.format("%s, %s in %s", action, issue, repo));
+	  			break;
+	  		default:
+	  			action = payload.get("action").asText();
+	  			out.add(String.format("%s:%s in %s", type, action, repo));
 	  			break;
 	  		}
 		}
