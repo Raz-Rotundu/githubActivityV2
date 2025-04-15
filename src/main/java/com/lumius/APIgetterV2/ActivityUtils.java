@@ -8,12 +8,15 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 
 /**
  * Activity Utils -- A collection of static functions for querying gitHub API and parsing through the results
@@ -29,17 +32,29 @@ public class ActivityUtils {
 	 */
 	public static List<String> parseStrings(List<JsonNode> nodes) {
 		List<String> out = new ArrayList<String>();
+		
+		Map<Pair<String, String>, Integer> frequencies = new HashMap<>();
   	
+		// get frequencies 
 		for(JsonNode node : nodes) {
 			String type = node.get("type").asText();
 			String repo = node.get("repo").get("name").asText();
 			JsonNode payload = node.get("payload");
 			String action = "";
-	  		
+			
 	  		switch(type) {
 	  		case("PushEvent"):
-	  			String size = payload.get("size").asText();
-	  			out.add(String.format("Pushed %s commits to %s", size, repo));	
+	  			Integer size = Integer.valueOf(payload.get("size").asText());
+	  			
+	  		
+	  			// Condense number of commits to each repo
+	  			Pair<String, String> p = new Pair<String, String>(type, repo);
+	  			if(frequencies.containsKey(p)) {
+	  				frequencies.replace(p, frequencies.get(p) + size);
+	  			}
+	  			else {
+	  				frequencies.put(p, size);
+	  			}
 	  			break;
 	  		case("CreateEvent"):
 	  			out.add(String.format("Created repo %s", repo));
@@ -59,6 +74,10 @@ public class ActivityUtils {
 	  			break;
 	  		}
 		}
+		frequencies.forEach((k,v) -> {
+			String s = String.format("Made %d commits to %s", v, k.getV());
+			out.addFirst(s);
+		});
 		return out;
 	}
   
