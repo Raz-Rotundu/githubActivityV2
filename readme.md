@@ -1,5 +1,5 @@
 # Github Activity Reader (Simpler)
-This is a simpler version of the gitHub Activity reader found [here](). It has no command line features, uses only anonymous access and gets the last 30 activity events of the selected user.
+This is a simpler version of the gitHub Activity reader found [here](https://github.com/Raz-Rotundu/githubActivity). It has no command line features, uses only anonymous access and gets the last 30 activity events of the selected user.
 
 
 ## Dependencies
